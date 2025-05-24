@@ -3,9 +3,11 @@ package com.zeynep.blog.services;
 import com.zeynep.blog.domain.entities.Category;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface CategoryService {
 
     List<Category> listCategories();
     Category createCategory(Category categoryToCreate);
+    void deleteCategory(UUID id);
 }

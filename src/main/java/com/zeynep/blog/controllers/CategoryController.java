@@ -7,11 +7,13 @@ import com.zeynep.blog.mappers.CategoryMapper;
 import com.zeynep.blog.services.CategoryService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.http11.filters.VoidInputFilter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -43,5 +45,10 @@ public class CategoryController {
                 categoryMapper.toDto(savedCategory),
                 HttpStatus.CREATED
                 );
+    }
+
+    public ResponseEntity<Void> deleteCategory(@PathVariable UUID id){
+        categoryService.deleteCategory(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
